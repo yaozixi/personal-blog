@@ -1,7 +1,11 @@
 <div id="pagination">
     <ul id="pagination-flickr">
         {% if article_list.has_previous %}
-            <li class="previous"><a href="?page={{ article_list.previous_page_number }}">&laquo;上一页</a></li>
+            {% if year and month %}
+                <li class="previous"><a href="?page={{ article_list.previous_page_number }}&year={{ year }}&month={{ month }}">&laquo;上一页</a></li>
+            {% else %}
+                <li class="previous"><a href="?page={{ article_list.previous_page_number }}">&laquo;上一页</a></li>
+            {% endif %}
         {% else %}
             <li class="previous-off">&laquo;上一页</li>
         {% endif %}
@@ -9,7 +13,11 @@
         <li class="active">{{ page }}/{{ article_list.paginator.num_pages }}</li>
 
         {% if article_list.has_next %}
-            <li class="next"><a href="?page={{ article_list.next_page_number }}">下一页 &raquo;</a></li>
+            {% if year and month %}
+                <li class="next"><a href="?page={{ article_list.next_page_number }}&year={{ year }}&month={{ month }}">下一页 &raquo;</a></li>
+            {% else %}
+                <li class="next"><a href="?page={{ article_list.next_page_number }}">下一页 &raquo;</a></li>
+            {% endif %}
         {% else %}
             <li class="next-off">下一页 &raquo;</li>
         {% endif %}

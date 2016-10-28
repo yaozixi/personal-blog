@@ -58,7 +58,7 @@ class ArcicleManager(models.Manager):
 class Article(models.Model):
     title = models.CharField(max_length=20, verbose_name='文章名称')
     desc = models.CharField(max_length=20, verbose_name='文章描述')
-    content = models.CharField(max_length=50, null=True, verbose_name='文章内容')
+    content = models.CharField(max_length=200, null=True, verbose_name='文章内容')
     click_count = models.IntegerField(default=0, verbose_name='点击次数')
     is_recommend = models.BooleanField(default=False, verbose_name='是否推荐')
     date_publish = models.DateTimeField(auto_now_add=True, verbose_name='发布时间')  # auto_now_add是自动增加时间的吗
@@ -92,7 +92,7 @@ class Comment(models.Model):
         verbose_name_plural = verbose_name
 
     def __unicode__(self):
-        return self.id
+        return self.content
 
 
 class Links(models.Model):
